@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Parking System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .road-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .road {
+            width: 80%;
+            height: 50px;
+            background-color: #3498db; /* Blue road color */
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .car {
+            width: 50px;
+            height: 30px;
+            background-color: #e74c3c; /* Red car color */
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .parking-slot {
+            width: 200px;
+            height: 50px;
+            margin: 10px;
+            border: 2px solid #2c3e50; /* Dark gray border */
+            background-color: #27ae60; /* Green parking slot color */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            position: relative;
+        }
+
+        .parking-slot.full {
+            background-color: #e74c3c; /* Red background for full slots */
+        }
+    </style>
+</head>
+<body>
+
+<div class="road-container">
+    <div class="road">
+        <div class="car"></div>
+    </div>
+</div>
+
+<div class="road-container">
+    <div class="parking-slot" onclick="toggleSlot(1)">Empty</div>
+    <div class="parking-slot" onclick="toggleSlot(2)">Empty</div>
+    <div class="parking-slot" onclick="toggleSlot(3)">Empty</div>
+</div>
+
+<script>
+    function toggleSlot(slotNumber) {
+        var parkingSlot = document.querySelector('.parking-slot:nth-child(' + slotNumber + ')');
+        parkingSlot.classList.toggle('full');
+        parkingSlot.textContent = parkingSlot.classList.contains('full') ? 'Full' : 'Empty';
+    }
+</script>
+
+</body>
+</html>
